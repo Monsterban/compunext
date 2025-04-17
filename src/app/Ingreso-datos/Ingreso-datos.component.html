@@ -1,0 +1,46 @@
+
+<div class="card">
+<div class="card-body">
+<form (ngSubmit)="enviar()" #formOrden="ngForm">
+  <div>
+    <label class="form-label mt-3"> Nombre: </label>
+    <input type="text" name="nombre" class="form-control" placeholder="ingresa un Nombre" [(ngModel)]="Orden.nombre" required= "true"  #name="ngModel"/>
+
+<div class="alert alert-danger mt-3" [hidden]="name.valid || name.pristine">
+El nombre es obligatorio
+</div>
+  </div>
+
+  <div>
+    <label class="form-label mt-3"> identificacion: </label>
+    <input type="number" name="identificacion" class="form-control" placeholder="ingresa la identificacion " [(ngModel)]="Orden.identificacion" required= "true"  #id="ngModel"/>
+
+    <div class="alert alert-danger mt-3" [hidden]="id.valid || id.pristine">
+      La identificacion es obligatoria
+      </div>
+  </div>
+
+  <div>
+    <label class="form-label mt-3"> Correo: </label>
+    <input type="text" name="email" class="form-control" placeholder="ingresa el correo " [(ngModel)]="Orden.correo" required= "true" #email="ngModel"/>
+
+    <div class="alert alert-danger mt-3" [hidden]="email.valid || email.pristine">
+      El correo es obligatorio
+      </div>
+  </div>
+
+  <div>
+    <label class="form-label mt-3"> telefono: </label>
+    <input type="number" name="phone" class="form-control" placeholder="ingresa el telefono celular " [(ngModel)]="Orden.telefono " required= "true"  #phone="ngModel"/>
+
+    <div class="alert alert-danger mt-3" [hidden]="phone.valid || phone.pristine">
+      El telefono es obligatorio
+      </div>
+  </div>
+
+  <button class="btn btn-success mt-3" [disabled]="formOrden.invalid" >Enviar</button>
+</form>
+</div>
+</div>
+
+
