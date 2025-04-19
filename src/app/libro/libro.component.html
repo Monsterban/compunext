@@ -1,8 +1,20 @@
 <h2>Libro de ventas</h2>
 
-<div>
-  {{ id }} 
-  {{ name }} 
-  {{ email }} 
-  {{ phone }} 
-</div>
+<table class="table table-bordered border-danger mgtop-5 border-2">
+  <thead>
+      <tr>
+          <th>Identificacion</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Telefono</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let Orden of ordenService.Ordenes">
+         <td>{{Orden.Identificacion}}</td>
+         <td>{{Orden.Nombre}}</td>
+         <td>{{Orden.Correo}}</td>
+         <td>{{Orden.Telefono}}</td>
+      </tr>
+  </tbody>
+  </table>
