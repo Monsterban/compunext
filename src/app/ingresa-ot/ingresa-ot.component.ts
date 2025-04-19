@@ -2,20 +2,21 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
-import { LibroComponent } from "../libro/libro.component";
+import { OrdenService } from '../services/orden.service';
+
 
 @Component({
   selector: 'app-ingresa-ot',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, LibroComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './ingresa-ot.component.html',
   styleUrl: './ingresa-ot.component.css'
 })
 export class IngresaOTComponent {
- 
+
   formOT: FormGroup;
 
 
-constructor(private fB: FormBuilder) {
+constructor(public OrdenService: OrdenService,private fB: FormBuilder) {
   this.formOT = this.fB.group({
     'identificacion': ['', [Validators.required, Validators.pattern('^[0-9]{5,12}$')]],
     'nombre': ['', [Validators.required, Validators.pattern('^[A-Z  ]{5,50}$')]],
@@ -42,9 +43,18 @@ constructor(private fB: FormBuilder) {
     return this.formOT.get('telefono') as FormControl; 
   }
   
-SubirOt(){
-  console.log(this.formOT.value);
-}
+  SubirOt() {
+    if (this.formOT.valid) {
+      this.OrdenService.crearorden(
+        this.identifiacion.value,
+        this.nombre.value,
+        this.correo.value,
+        this.telefono.value
+      );
+    } else {
+      this.formOT.markAllAsTouched();
+    }
+  }
 
 
 
