@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Orden {
-  Identificacion: number;
+  identificacion: number;
   Nombre: string;
   Correo: string;
   Telefono: number;

@@ -1,7 +1,12 @@
 h1 {
-  color: blueviolet;
+  color: rgba(4, 128, 245, 0.89);
+  background-color: whitesmoke;
 }
 
 .active{
   color: red;
+}
+
+body {
+  background-color: #ec0fe1f8; /* Cambia este color al que desees */
 }

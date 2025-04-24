@@ -1,21 +1,30 @@
 <div class="card">
-    <div class="cardbody">
+    <div class="card-body">
     <form [formGroup]="formOT" (ngSubmit)="SubirOt()">
        <div class="mb-2">
         <label class="form-label mt-3">
     Identificacion:
 </label>
-<input type="number" formControlName="identificacion" class="form-control" placeholder="Ingresa una identificacion" />
-<div class="alert alert-danger mt-3" *ngIf="identifiacion.invalid && !identifiacion.pristine">
-    <span *ngIf="identifiacion.errors?.['required']">
+<input type="text" name="Identificacion" formControlName="identificacion" class="form-control" 
+placeholder="Ingresa una identificacion"  [matAutocomplete]="auto" 
+(input)="buscarSugerencias($event)" />
+
+<mat-autocomplete #auto="matAutocomplete" (optionSelected)="autocompletarformulario($event.option.value)">
+    <mat-option *ngFor="let sugerencia of sugerencias" [value]="sugerencia.identificacion">
+      {{ sugerencia.identificacion }}
+    </mat-option>
+  </mat-autocomplete>
+<div>
+<div class="alert alert-danger mt-3" *ngIf="identificacion?.invalid && !identificacion?.pristine">
+    <span *ngIf="identificacion.errors?.['required']">
       La identificación es obligatoria
     </span>
   
-    <span *ngIf="identifiacion.errors?.['pattern']">
+    <span *ngIf="identificacion.errors?.['pattern']">
         Identificacion no valida
     </span>
   </div>
-
+</div>
         
        </div>
         

@@ -3,7 +3,7 @@ import { IngresaOTComponent } from './ingresa-ot/ingresa-ot.component';
 import { LibroComponent } from './libro/libro.component';
 
 export const routes: Routes = [
-{path: '', redirectTo: 'ingresa-ot', pathMatch: 'full'
+{path: '', redirectTo: 'Ingresar orden', pathMatch: 'full'
     
 },
 {
@@ -18,7 +18,7 @@ component: LibroComponent,
 title: 'Libro de Ventas'
 },
   {
-    path: '**', // Ruta comodín para manejar URLs no encontradas
-    redirectTo: 'ingresa-ot'
+    path: '**', 
+    redirectTo: 'Ingresar orden'
   }
 ];
